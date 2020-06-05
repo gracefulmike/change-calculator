@@ -12,7 +12,7 @@ class ChangeController extends Controller
 		 * Calculate the change to return in tender
 		 *
 		 * @param $request
-		 * 
+		 *
 		 * @return array
 		 */
     public function calculate(Request $request) {
@@ -36,17 +36,17 @@ class ChangeController extends Controller
 
 	    foreach ($denominations as $denomination)
 	    {
-	        if ($changeRemaining > $denomination)
+	        if ($changeRemaining >= $denomination)
 	        {
 	             // Find out how many times this denomination fits in the remaining change
 	             $denominationCount = floor($changeRemaining / $denomination);
-	             
+
 	             // Update the tender list with the above denomination
 	             array_push($tenderList, [
 	             	'denomination' => $denomination,
 	             	'count' => $denominationCount
 	             ]);
-	             
+
 	             // Update the remaining change
 	             $changeRemaining -= $denomination * $denominationCount;
 	        }
