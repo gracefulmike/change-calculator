@@ -50,7 +50,7 @@
                 <i class="fas fa-money-bill-wave-alt"></i>
                 <span>Change</span>
             </h2>
-            <b-card v-for="denomination in change" class="my-4">
+            <b-card v-for="denomination in change" :key="denomination.denomination" class="my-4">
                 <b-card-text>
                     <h5 class="text-success d-inline">${{ denomination.denomination / 100 }}</h5>
                     <span>x</span>
@@ -103,5 +103,5 @@
 </script>
 
 <style lang="scss">
-    
+
 </style>
