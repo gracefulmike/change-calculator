@@ -17,7 +17,7 @@ class CreateDenominationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('currency')->unique();
             $table->string('symbol');
-            $table->json('denominations');
+            $table->string('denominations');
             $table->timestamps();
         });
     }
