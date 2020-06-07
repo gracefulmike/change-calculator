@@ -22,8 +22,8 @@ class ChangeController extends Controller
 			    'provided' => 'required'
 			]);
 
-    	$cost = $request->input('cost');
-    	$provided = $request->input('provided');
+    	$cost = (int)($request->input('cost') * 100);
+    	$provided = (int)($request->input('provided') * 100);
     	$currency = $request->input('currency') ?? 'USD';
     	$denominations = CurrencyDenomination::find($currency)->denominations;
 
@@ -31,7 +31,7 @@ class ChangeController extends Controller
     		return response('Not enough money provided!', 400);
     	}
 
-    	$changeRemaining = ($provided - $cost) * 100;
+    	$changeRemaining = $provided - $cost;
 	    $tenderList = array();
 
 	    foreach ($denominations as $denomination)
